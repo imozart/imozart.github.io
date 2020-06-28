@@ -1,141 +1,237 @@
-.menu-wrap {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-.menu-wrap .toggler {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-    opacity: 0;
+html {
+    font-size: 62.5%;
 }
 
-.menu-wrap .hamburger {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 60px;
-    height: 60px;
-    padding: 1rem;
-    background: var(--primary-color);
+.container {
+    width: 100%;
+    height: 100vh;
+    background-color: #051321;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-/*Hamburger line*/
-/*primeiro div da classe hamburger*/
-.menu-wrap .hamburger > div {
+.card {
+    width: 40rem;
+}
+
+.card-bio {
+    background-color: #45a564;
+    padding: 3rem 3rem 8rem 3rem;
+    display: flex;
+    border-radius: 0.5rem 0.5rem 0 0;
     position: relative;
+    z-index: 100;
+}
+
+.img-wrapper {
+    width: 9rem;
+    height: 9rem;
+    margin-right: 3rem;    
+}
+
+.img-wrapper img {
     width: 100%;
-    height: 2px;
-    background-color: #ffffff;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.person-info {
+    width: 60%;
+    font-family: 'Roboto Mono', monospace, sans-serif;
+    color: #fff;
+    text-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.3);
+}
+
+.person-info h3 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+    margin-bottom: 1rem;
+}
+
+.person-info p {
+    font-size: 1.8rem;
+}
+
+.card-btn {
+    position: absolute;
+    bottom: -2.5rem;
+    right: 10rem;
+    width: 20rem;
+    height: 6rem;
+    background-color: #2b303a;
+    color: #fff;
+    border-radius: 5rem;
+    border: none;
+    font-family: 'Roboto Mono', monospace, sans-serif;
+    font-size: 2.4rem;
+    text-transform: uppercase;
+    box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.3);
+    outline: none;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.change .card-btn {
+    width: 6rem;
+    right: 3rem;
+    bottom: -3rem;
+    border-radius: 50%;    
+}
+
+.card-btn-contact {
+    transition: all 0.5s 0.1s;
+}
+
+.card-btn-contact,
+.card-btn i {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.change .card-btn-contact {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.1s;
+}
+
+.card-btn i {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.change .card-btn i {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s;
+}
+
+.card-contact {
+    background-color: #2d814d;
+    color: #fff;
+    padding: 1.5rem 2rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+    transform: translateY(-100%);
+    transition: all 0.5s;
+}
+
+.change .card-contact {
+    transform: translateY(0);
+}
+
+.card-contact h4 {
+    font-family: 'Roboto Mono', monospace, sans-serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    text-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.3);
+    transform: scale(0);
+    transform-origin: left;
+    transition: all 0.5s;
+}
+
+.change .card-contact h4 {
+    transform: scale(1);
+}
+
+.card-social {
+    background-color: #fff;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius:  0.3rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition: all 0.4s ease;
+    cursor: pointer;
+    transform: translateY(-50%);
+    opacity: 0;
+    visibility: hidden;
 }
 
-/*top and bottom lines*/
-.menu-wrap .hamburger > div:before,
-.menu-wrap .hamburger > div:after {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    top: -10px;
-    width: 100%;
-    height: 2px;
-    background: inherit;
+.email {
+    transition: all 0.5s 0.3s;
 }
 
-/*moves line down*/
-.menu-wrap .hamburger > div:after {
-    top: 10px;
+.linkedin {
+    transition: all 0.5s 0.5s;
 }
 
-/*toggler animate*/
-.menu-wrap .toggler:checked + .hamburger > div {
-    transform: rotate(135deg);
+.github {
+    transition: all 0.5s 0.7s;
 }
 
-/*turn lines into X*/
-.menu-wrap .toggler:checked + .hamburger > div:before,
-.menu-wrap .toggler:checked + .hamburger > div:after {
-    top: 0;
-    transform: rotate(90deg);
-}
-
-/*rotate on hover when checked*/
-.menu-wrap .toggler:checked:hover + .hamburger > div {
-    transform: rotate(225deg);
-}
-
-/*show menu*/
-.menu-wrap .toggler:checked ~ .menu {
+.change .card-social {
+    transform: translateY(0);
+    opacity: 1;
     visibility: visible;
 }
 
-.menu-wrap .toggler:checked ~ .menu > div {
-    transform: scale(1);
-    transition-duration: var(--menu-speed);
-
-}
-
-.menu-wrap .toggler:checked ~ .menu > div > div {
-    opacity: 1;
-    transition: opacity 0.4s ease;
-}
-
-.menu-wrap .menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    visibility: hidden;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.menu-wrap .menu > div {
-    background: var(--overlay-color);
+.icon-wrapper {
+    width: 4rem;
+    height: 4rem;
     border-radius: 50%;
-    width: 200vw;
-    height: 200vw;
     display: flex;
-    flex: none;
-    align-items: center;
     justify-content: center;
-    transform: scale(0);
-    transition: all 0.4s ease;
+    align-items: center;
+    margin-right: 2rem;
 }
 
-.menu-wrap .menu > div > div {
-    text-align: center;
-    max-width: 90vw;
-    max-height: 100vh;
-    opacity: 0;
-    transition: opacity 0.4s ease;
+.email .icon-wrapper {
+    background-color: #dd4b39;
 }
 
-.menu-wrap .menu > div > div > ul > li {
-    list-style: none;
-    color: #ffffff;
-    font-size: 1.5rem;
-    padding: 1rem;
+.linkedin .icon-wrapper {
+    background-color: #007bb6;
 }
 
-.menu-wrap .menu > div > div > ul > li > a {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.4s ease;
+.github .icon-wrapper {
+    background-color: #000000;
+}
+
+.icon-wrapper i {
+    font: 2rem;
+    color: #fff;
+}
+
+.contact-details h4 {
+    font-family: 'Roboto Mono', monospace, sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.email h4 {
+    color: #dd4b39;
+}
+
+.linkedin h4 {
+    color: #007bb6;
+}
+
+.github h4 {
+    color: #000000;
+}
+
+.contact-details p {
+    font-family: 'Roboto Mono', monospace, sans-serif;
+    font-size: 1.4rem;
+    color: #444;
+    letter-spacing: 0.1rem;
+}
+
+.card-social span {
+    margin-left: auto;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #999;
 }
